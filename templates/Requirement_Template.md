@@ -1,63 +1,48 @@
-<!--
-HOW TO USE THIS TEMPLATE
-------------------------
-1. Copy this file and rename it to the requirement's ID, e.g. REQ-01.md.
-2. Fill in every section. If a section genuinely does not apply to this
-   requirement (not every requirement has a Business Rule or a Constraint),
-   write "N/A — none identified" and say why in one line. Never invent
-   content to fill a blank cell — that breaks the rule we've followed since
-   Class 8: specification is not invention.
-3. If something is unknown rather than inapplicable, use the Open
-   Questions section instead of guessing.
-4. See REQ-07_Example.md (Food Delivery System) for a fully filled-in
-   reference before you start.
--->
-
-# [REQ-ID] — [Short Requirement Title]
+# [REQ-001] — [Generación de Horario según preferencias]
 
 | | |
 |---|---|
 | **Status** | Draft / Validated / Open Question |
-| **Team / Author(s)** | |
-| **Date** | |
-| **Linked User Story / AC** | |
+| **Team / Author(s)** | Jonathan Ramírez Contreras, Carlos Stiven Romero Sicacha, Julian Ricardo Rodríguez Villamizar |
+| **Date** | October 08, 2026 |
+| **Linked User Story / AC** | N/A (Viendo el ejemplo no entendemos como se llena esta celda del cuadro) |
 
 ---
 
 ## 1. Overview
 
 **Requirement Statement**
-> The system shall [capability/behavior] [under what condition, if applicable].
+> El sistema generará combinaciones de horarios académicos a partir de una lista de asignaturas seleccionada, garantizando que las opciones generadas no presenten cruces de horarios y cumplan con la carga mínima de créditos requerida para el semestre actual y con las [preferencias](../glosario.md) del estudiante.
 
-**Type:** Functional / Non-functional
-*(Classified using the Perfect Technology Filter from Class 8: imagine a perfect computer — infinite speed, unlimited memory, zero failures, zero cost. Would this requirement still matter? Yes → likely functional. The limitation disappears with perfect technology → likely non-functional.)*
+**Type:** Functional
+*(Si tuviéramos un computador perfecto con capacidad de procesamiento infinita, aún necesitaríamos que el sistema ejecutara esta lógica de implementación para combinar los horarios. Por tanto, es funcional).*
 
 **Source / Evidence**
-> Where did this come from? (stakeholder, interview, workshop, existing system, regulation — reference your Class 8 Discovery Sheet entry if you have one)
+> Viene de la entrevista al stakeholder (Otro estudiante): "El estudiante quiere tener disponibles varias opciones de horarios para poder ajustarlos a sus preferencias y mirar cuáles materias le conviene más ver en el semestre, de manera rápida y sin hacerlo a mano".
 
 **Need**
-> What is the underlying need, stated as a goal — not a solution? (e.g. "know when my order will arrive," not "build a GPS map")
+> Generar diferentes combinaciones de horarios académicos de manera automática a partir de una lista de asignaturas seleccionada.
 
 **Value / Rationale**
-> Why does this requirement matter? What becomes better for the user/business if it's satisfied? *(This is usually the same as the "so that" of your User Story below — write it once and reuse it, don't rewrite it from scratch.)*
+> Reducir la incertidumbre para elegir materias y tener diferentes opciones de horarios que se ajusten según las [preferencias](../glosario.md) del estudiante.
 
 ---
 
 ## 2. Context — A Requirement Rarely Stands Alone
 
-*(Class 10. Fill honestly — "N/A — none identified" is a valid, expected answer for several of these.)*
-
 **Business Rule(s)**
-> What rule(s) exist in the business/domain, independent of software, that this requirement supports or enforces? Remember: Business Rule ≠ Software Requirement — not every rule needs one.
+> Dependencia Semestral de Carga Mínima: La cantidad mínima de créditos que un estudiante está obligado a inscribir no es un valor universal, sino que está estrictamente determinada por la Universidad cada semestre. Ningún horario es válido para formalizar matrícula si la suma total de sus créditos es inferior a este tope exigido.
+> Un estudiante no puede estar inscrito simultáneamente en dos o más grupos académicos si existe cualquier coincidencia (solapamiento) de días y horas en sus franjas de clase.
 
 **Constraint(s)**
-> What limits how this requirement can be solved (regulation, existing technology, contract, interoperability, organizational policy)? A constraint reduces the available design space — it doesn't describe what must be satisfied, it describes what limits the solution.
+> El sistema debe calcular combinaciones que no presenten cruces y que la cantidad de créditos no sea menor a la cantidad mínima. Dado que una materia puede tener múltiples grupos, el número de combinaciones crece exponencialmente.
 
 **Assumption(s)**
-> What are we currently treating as true, without full verification, to keep moving? (Assumption ≠ Fact.)
+> 1. Asumimos que el sistema ya cuenta con la información actualizada y centralizada de la oferta académica (materias, grupos, horarios, cupos).
+> 2. Asumimos que la "carga mínima de créditos" es un valor dado a conocer por la Universidad.
 
 **Dependenc(ies)**
-> What does this requirement rely on to be satisfied (another requirement, an external system/API, a data source, a third party, an organizational process)?
+> Buscador de cursos del Sistema de Información Académica (SIA)
 
 **Risk(s)**
 > What uncertain event or condition could negatively affect this requirement or its delivery? For each risk, note a rough Likelihood and Impact (High / Medium / Low) and, if you have one, a brief mitigation note.
